@@ -1,0 +1,630 @@
+{
+  "version": "1.0",
+  "id": "utm-fy2526",
+  "title": "UTM Annual Dashboard FY 2025-26",
+  "subtitle": "UTM · Myntra · FY 2025–26 · Apr 2025 – Mar 2026",
+  "brands": [
+    {
+      "id": "overall",
+      "navLabel": "Overall",
+      "label": "Overall",
+      "color": "#818cf8",
+      "gradient": "linear-gradient(135deg,#0f172a,#1e1b4b,#312e81)",
+      "eyebrow": "UTM · Myntra · FY 2025–26 · Apr 2025 – Mar 2026",
+      "subtitle": "Annual Sales & Returns Analysis · 12 Months",
+      "filter": null,
+      "filterField": null,
+      "kpis": [
+        { "id": "kpi-sq", "label": "Sales Qty", "field": "Total Sales Qty", "aggregation": "sum", "format": "compact", "color": "#c7d2fe" },
+        { "id": "kpi-rev", "label": "Revenue", "field": "Revenue", "aggregation": "sum", "format": "currency", "color": "#c7d2fe" },
+        { "id": "kpi-ret", "label": "Total Returns", "field": "Total Return Qty", "aggregation": "sum", "format": "compact", "color": "#c7d2fe" },
+        { "id": "kpi-rr", "label": "Return Rate", "field": "Return %", "aggregation": "avg", "format": "percent", "color": "#c7d2fe" },
+        { "id": "kpi-cost", "label": "Avg Cost", "field": "Cost", "aggregation": "avg", "format": "currency", "color": "#c7d2fe" },
+        { "id": "kpi-ros", "label": "Avg ROS (active)", "field": "ROS", "aggregation": "avg", "format": "decimal", "color": "#c7d2fe" },
+        { "id": "kpi-styles", "label": "Style IDs", "field": "Style id", "aggregation": "countDistinct", "format": "number", "color": "#c7d2fe" }
+      ],
+      "tabs": [
+        {
+          "id": "overview",
+          "label": "Overview",
+          "widgets": [
+            {
+              "id": "w-monthly-sales",
+              "type": "chart",
+              "title": "Monthly Sales Quantity",
+              "chartType": "bar",
+              "span": 1,
+              "height": "md",
+              "dataMapping": { "xAxis": "Month", "yAxis": "Total Sales Qty", "groupBy": null },
+              "aggregation": "sum",
+              "sortBy": "Month Numbering",
+              "color": "#818cf8"
+            },
+            {
+              "id": "w-monthly-rev",
+              "type": "chart",
+              "title": "Monthly Revenue",
+              "chartType": "line",
+              "span": 1,
+              "height": "md",
+              "dataMapping": { "xAxis": "Month", "yAxis": "Revenue", "groupBy": null },
+              "aggregation": "sum",
+              "sortBy": "Month Numbering",
+              "color": "#6366f1"
+            },
+            {
+              "id": "w-brand-sales",
+              "type": "chart",
+              "title": "Sales by Brand",
+              "chartType": "pie",
+              "span": 1,
+              "height": "sm",
+              "dataMapping": { "xAxis": "Brand", "yAxis": "Total Sales Qty", "groupBy": null },
+              "aggregation": "sum",
+              "colors": ["#818cf8","#f472b6","#c9973a","#60a5fa","#fb923c"]
+            },
+            {
+              "id": "w-article-sales",
+              "type": "chart",
+              "title": "Sales by Article Type",
+              "chartType": "bar",
+              "span": 1,
+              "height": "sm",
+              "dataMapping": { "xAxis": "Article Type", "yAxis": "Total Sales Qty", "groupBy": null },
+              "aggregation": "sum",
+              "color": "#818cf8",
+              "horizontal": true
+            },
+            {
+              "id": "w-returns-trend",
+              "type": "chart",
+              "title": "Monthly Returns vs Sales",
+              "chartType": "bar",
+              "span": 2,
+              "height": "md",
+              "dataMapping": { "xAxis": "Month", "yAxis": ["Total Sales Qty","Total Return Qty"], "groupBy": null },
+              "aggregation": "sum",
+              "sortBy": "Month Numbering",
+              "colors": ["#818cf8","#f87171"],
+              "multiSeries": true
+            }
+          ]
+        },
+        {
+          "id": "monthly",
+          "label": "Monthly",
+          "widgets": [
+            {
+              "id": "w-monthly-detail",
+              "type": "chart",
+              "title": "Monthly Sales & Revenue Trend",
+              "chartType": "line",
+              "span": 2,
+              "height": "lg",
+              "dataMapping": { "xAxis": "Month", "yAxis": ["Total Sales Qty","Revenue"], "groupBy": null },
+              "aggregation": "sum",
+              "sortBy": "Month Numbering",
+              "multiSeries": true,
+              "colors": ["#818cf8","#34d399"]
+            },
+            {
+              "id": "w-monthly-ret-rate",
+              "type": "chart",
+              "title": "Monthly Return Rate %",
+              "chartType": "line",
+              "span": 2,
+              "height": "md",
+              "dataMapping": { "xAxis": "Month", "yAxis": "Return %", "groupBy": null },
+              "aggregation": "avg",
+              "sortBy": "Month Numbering",
+              "color": "#f87171",
+              "fillArea": true
+            }
+          ]
+        },
+        {
+          "id": "articles",
+          "label": "Article Types",
+          "widgets": [
+            {
+              "id": "w-art-sales-chart",
+              "type": "chart",
+              "title": "Sales Qty by Article Type",
+              "chartType": "bar",
+              "span": 1,
+              "height": "md",
+              "dataMapping": { "xAxis": "Article Type", "yAxis": "Total Sales Qty", "groupBy": null },
+              "aggregation": "sum",
+              "color": "#818cf8",
+              "horizontal": true
+            },
+            {
+              "id": "w-art-rev-chart",
+              "type": "chart",
+              "title": "Revenue by Article Type",
+              "chartType": "bar",
+              "span": 1,
+              "height": "md",
+              "dataMapping": { "xAxis": "Article Type", "yAxis": "Revenue", "groupBy": null },
+              "aggregation": "sum",
+              "color": "#6366f1",
+              "horizontal": true
+            },
+            {
+              "id": "w-art-table",
+              "type": "table",
+              "title": "Article Type Summary",
+              "span": 2,
+              "groupBy": "Article Type",
+              "columns": [
+                { "field": "Article Type", "label": "Article Type" },
+                { "field": "Style id", "label": "Styles", "aggregation": "countDistinct", "align": "right" },
+                { "field": "Total Sales Qty", "label": "Sales Qty", "aggregation": "sum", "align": "right", "format": "compact" },
+                { "field": "Revenue", "label": "Revenue", "aggregation": "sum", "align": "right", "format": "currency" },
+                { "field": "Total Return Qty", "label": "Returns", "aggregation": "sum", "align": "right", "format": "compact" },
+                { "field": "Return %", "label": "Return %", "aggregation": "avg", "align": "right", "format": "percent" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sangria",
+      "navLabel": "Sangria",
+      "label": "Sangria",
+      "color": "#db2777",
+      "gradient": "linear-gradient(135deg,#1a0a14,#3b0728,#831843)",
+      "eyebrow": "UTM · Myntra · FY 2025–26 · Apr 2025 – Mar 2026",
+      "subtitle": "Sangria Brand Performance · Annual",
+      "filter": "Sangria",
+      "filterField": "Brand",
+      "titleStyle": "background:linear-gradient(90deg,#f9a8d4,#fde68a,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;",
+      "kpis": [
+        { "id": "kpi-sq", "label": "Sales Qty", "field": "Total Sales Qty", "aggregation": "sum", "format": "compact", "color": "#fbcfe8" },
+        { "id": "kpi-rev", "label": "Revenue", "field": "Revenue", "aggregation": "sum", "format": "currency", "color": "#fbcfe8" },
+        { "id": "kpi-ret", "label": "Total Returns", "field": "Total Return Qty", "aggregation": "sum", "format": "compact", "color": "#fbcfe8" },
+        { "id": "kpi-rr", "label": "Return Rate", "field": "Return %", "aggregation": "avg", "format": "percent", "color": "#fbcfe8" },
+        { "id": "kpi-cost", "label": "Avg Cost", "field": "Cost", "aggregation": "avg", "format": "currency", "color": "#fbcfe8" },
+        { "id": "kpi-ros", "label": "Avg ROS (active)", "field": "ROS", "aggregation": "avg", "format": "decimal", "color": "#fbcfe8" },
+        { "id": "kpi-styles", "label": "Style IDs", "field": "Style id", "aggregation": "countDistinct", "format": "number", "color": "#fbcfe8" }
+      ],
+      "tabs": [
+        {
+          "id": "overview",
+          "label": "Overview",
+          "widgets": [
+            {
+              "id": "w-sg-monthly-sales",
+              "type": "chart",
+              "title": "Monthly Sales Quantity",
+              "chartType": "bar",
+              "span": 1,
+              "height": "md",
+              "dataMapping": { "xAxis": "Month", "yAxis": "Total Sales Qty", "groupBy": null },
+              "aggregation": "sum",
+              "sortBy": "Month Numbering",
+              "color": "#db2777"
+            },
+            {
+              "id": "w-sg-monthly-rev",
+              "type": "chart",
+              "title": "Monthly Revenue",
+              "chartType": "line",
+              "span": 1,
+              "height": "md",
+              "dataMapping": { "xAxis": "Month", "yAxis": "Revenue", "groupBy": null },
+              "aggregation": "sum",
+              "sortBy": "Month Numbering",
+              "color": "#f472b6"
+            },
+            {
+              "id": "w-sg-art-pie",
+              "type": "chart",
+              "title": "Sales by Article Type",
+              "chartType": "pie",
+              "span": 1,
+              "height": "sm",
+              "dataMapping": { "xAxis": "Article Type", "yAxis": "Total Sales Qty", "groupBy": null },
+              "aggregation": "sum"
+            },
+            {
+              "id": "w-sg-returns",
+              "type": "chart",
+              "title": "Monthly Returns vs Sales",
+              "chartType": "bar",
+              "span": 1,
+              "height": "sm",
+              "dataMapping": { "xAxis": "Month", "yAxis": ["Total Sales Qty","Total Return Qty"], "groupBy": null },
+              "aggregation": "sum",
+              "sortBy": "Month Numbering",
+              "multiSeries": true,
+              "colors": ["#db2777","#f87171"]
+            }
+          ]
+        },
+        {
+          "id": "monthly",
+          "label": "Monthly",
+          "widgets": [
+            {
+              "id": "w-sg-trend",
+              "type": "chart",
+              "title": "Monthly Trend – Sales & Revenue",
+              "chartType": "line",
+              "span": 2,
+              "height": "lg",
+              "dataMapping": { "xAxis": "Month", "yAxis": ["Total Sales Qty","Revenue"], "groupBy": null },
+              "aggregation": "sum",
+              "sortBy": "Month Numbering",
+              "multiSeries": true,
+              "colors": ["#db2777","#fde68a"]
+            }
+          ]
+        },
+        {
+          "id": "articles",
+          "label": "Article Types",
+          "widgets": [
+            {
+              "id": "w-sg-art-table",
+              "type": "table",
+              "title": "Article Type Breakdown",
+              "span": 2,
+              "groupBy": "Article Type",
+              "columns": [
+                { "field": "Article Type", "label": "Article Type" },
+                { "field": "Style id", "label": "Styles", "aggregation": "countDistinct", "align": "right" },
+                { "field": "Total Sales Qty", "label": "Sales Qty", "aggregation": "sum", "align": "right", "format": "compact" },
+                { "field": "Revenue", "label": "Revenue", "aggregation": "sum", "align": "right", "format": "currency" },
+                { "field": "Return %", "label": "Return %", "aggregation": "avg", "align": "right", "format": "percent" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hop",
+      "navLabel": "House of Pataudi",
+      "label": "House of Pataudi",
+      "color": "#c9973a",
+      "gradient": "linear-gradient(135deg,#1a1000,#2d1a00,#451f00)",
+      "eyebrow": "UTM · Myntra · FY 2025–26 · Apr 2025 – Mar 2026",
+      "subtitle": "House of Pataudi Brand Performance · Annual",
+      "filter": "House of Pataudi",
+      "filterField": "Brand",
+      "kpis": [
+        { "id": "kpi-sq", "label": "Sales Qty", "field": "Total Sales Qty", "aggregation": "sum", "format": "compact", "color": "#fde68a" },
+        { "id": "kpi-rev", "label": "Revenue", "field": "Revenue", "aggregation": "sum", "format": "currency", "color": "#fde68a" },
+        { "id": "kpi-ret", "label": "Total Returns", "field": "Total Return Qty", "aggregation": "sum", "format": "compact", "color": "#fde68a" },
+        { "id": "kpi-rr", "label": "Return Rate", "field": "Return %", "aggregation": "avg", "format": "percent", "color": "#fde68a" },
+        { "id": "kpi-cost", "label": "Avg Cost", "field": "Cost", "aggregation": "avg", "format": "currency", "color": "#fde68a" },
+        { "id": "kpi-ros", "label": "Avg ROS (active)", "field": "ROS", "aggregation": "avg", "format": "decimal", "color": "#fde68a" },
+        { "id": "kpi-styles", "label": "Style IDs", "field": "Style id", "aggregation": "countDistinct", "format": "number", "color": "#fde68a" }
+      ],
+      "tabs": [
+        {
+          "id": "overview",
+          "label": "Overview",
+          "widgets": [
+            {
+              "id": "w-hop-monthly-sales",
+              "type": "chart",
+              "title": "Monthly Sales Quantity",
+              "chartType": "bar",
+              "span": 1,
+              "height": "md",
+              "dataMapping": { "xAxis": "Month", "yAxis": "Total Sales Qty", "groupBy": null },
+              "aggregation": "sum",
+              "sortBy": "Month Numbering",
+              "color": "#c9973a"
+            },
+            {
+              "id": "w-hop-monthly-rev",
+              "type": "chart",
+              "title": "Monthly Revenue",
+              "chartType": "line",
+              "span": 1,
+              "height": "md",
+              "dataMapping": { "xAxis": "Month", "yAxis": "Revenue", "groupBy": null },
+              "aggregation": "sum",
+              "sortBy": "Month Numbering",
+              "color": "#d97706"
+            },
+            {
+              "id": "w-hop-art-pie",
+              "type": "chart",
+              "title": "Sales by Article Type",
+              "chartType": "pie",
+              "span": 1,
+              "height": "sm",
+              "dataMapping": { "xAxis": "Article Type", "yAxis": "Total Sales Qty", "groupBy": null },
+              "aggregation": "sum"
+            },
+            {
+              "id": "w-hop-returns",
+              "type": "chart",
+              "title": "Returns vs Sales",
+              "chartType": "bar",
+              "span": 1,
+              "height": "sm",
+              "dataMapping": { "xAxis": "Month", "yAxis": ["Total Sales Qty","Total Return Qty"], "groupBy": null },
+              "aggregation": "sum",
+              "sortBy": "Month Numbering",
+              "multiSeries": true,
+              "colors": ["#c9973a","#f87171"]
+            }
+          ]
+        },
+        {
+          "id": "monthly",
+          "label": "Monthly",
+          "widgets": [
+            {
+              "id": "w-hop-trend",
+              "type": "chart",
+              "title": "Monthly Trend – Sales & Revenue",
+              "chartType": "line",
+              "span": 2,
+              "height": "lg",
+              "dataMapping": { "xAxis": "Month", "yAxis": ["Total Sales Qty","Revenue"], "groupBy": null },
+              "aggregation": "sum",
+              "sortBy": "Month Numbering",
+              "multiSeries": true,
+              "colors": ["#c9973a","#fde68a"]
+            }
+          ]
+        },
+        {
+          "id": "articles",
+          "label": "Article Types",
+          "widgets": [
+            {
+              "id": "w-hop-art-table",
+              "type": "table",
+              "title": "Article Type Breakdown",
+              "span": 2,
+              "groupBy": "Article Type",
+              "columns": [
+                { "field": "Article Type", "label": "Article Type" },
+                { "field": "Style id", "label": "Styles", "aggregation": "countDistinct", "align": "right" },
+                { "field": "Total Sales Qty", "label": "Sales Qty", "aggregation": "sum", "align": "right", "format": "compact" },
+                { "field": "Revenue", "label": "Revenue", "aggregation": "sum", "align": "right", "format": "currency" },
+                { "field": "Return %", "label": "Return %", "aggregation": "avg", "align": "right", "format": "percent" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aay",
+      "navLabel": "All About You",
+      "label": "All About You",
+      "color": "#2563eb",
+      "gradient": "linear-gradient(135deg,#00062a,#001f5b,#003c8a)",
+      "eyebrow": "UTM · Myntra · FY 2025–26 · Apr 2025 – Mar 2026",
+      "subtitle": "All About You Brand Performance · Annual",
+      "filter": "all about you",
+      "filterField": "Brand",
+      "kpis": [
+        { "id": "kpi-sq", "label": "Sales Qty", "field": "Total Sales Qty", "aggregation": "sum", "format": "compact", "color": "#bfdbfe" },
+        { "id": "kpi-rev", "label": "Revenue", "field": "Revenue", "aggregation": "sum", "format": "currency", "color": "#bfdbfe" },
+        { "id": "kpi-ret", "label": "Total Returns", "field": "Total Return Qty", "aggregation": "sum", "format": "compact", "color": "#bfdbfe" },
+        { "id": "kpi-rr", "label": "Return Rate", "field": "Return %", "aggregation": "avg", "format": "percent", "color": "#bfdbfe" },
+        { "id": "kpi-cost", "label": "Avg Cost", "field": "Cost", "aggregation": "avg", "format": "currency", "color": "#bfdbfe" },
+        { "id": "kpi-ros", "label": "Avg ROS (active)", "field": "ROS", "aggregation": "avg", "format": "decimal", "color": "#bfdbfe" },
+        { "id": "kpi-styles", "label": "Style IDs", "field": "Style id", "aggregation": "countDistinct", "format": "number", "color": "#bfdbfe" }
+      ],
+      "tabs": [
+        {
+          "id": "overview",
+          "label": "Overview",
+          "widgets": [
+            {
+              "id": "w-aay-monthly-sales",
+              "type": "chart",
+              "title": "Monthly Sales Quantity",
+              "chartType": "bar",
+              "span": 1,
+              "height": "md",
+              "dataMapping": { "xAxis": "Month", "yAxis": "Total Sales Qty", "groupBy": null },
+              "aggregation": "sum",
+              "sortBy": "Month Numbering",
+              "color": "#2563eb"
+            },
+            {
+              "id": "w-aay-monthly-rev",
+              "type": "chart",
+              "title": "Monthly Revenue",
+              "chartType": "line",
+              "span": 1,
+              "height": "md",
+              "dataMapping": { "xAxis": "Month", "yAxis": "Revenue", "groupBy": null },
+              "aggregation": "sum",
+              "sortBy": "Month Numbering",
+              "color": "#60a5fa"
+            },
+            {
+              "id": "w-aay-art-pie",
+              "type": "chart",
+              "title": "Sales by Article Type",
+              "chartType": "pie",
+              "span": 1,
+              "height": "sm",
+              "dataMapping": { "xAxis": "Article Type", "yAxis": "Total Sales Qty", "groupBy": null },
+              "aggregation": "sum"
+            },
+            {
+              "id": "w-aay-returns",
+              "type": "chart",
+              "title": "Returns vs Sales",
+              "chartType": "bar",
+              "span": 1,
+              "height": "sm",
+              "dataMapping": { "xAxis": "Month", "yAxis": ["Total Sales Qty","Total Return Qty"], "groupBy": null },
+              "aggregation": "sum",
+              "sortBy": "Month Numbering",
+              "multiSeries": true,
+              "colors": ["#2563eb","#f87171"]
+            }
+          ]
+        },
+        {
+          "id": "monthly",
+          "label": "Monthly",
+          "widgets": [
+            {
+              "id": "w-aay-trend",
+              "type": "chart",
+              "title": "Monthly Trend – Sales & Revenue",
+              "chartType": "line",
+              "span": 2,
+              "height": "lg",
+              "dataMapping": { "xAxis": "Month", "yAxis": ["Total Sales Qty","Revenue"], "groupBy": null },
+              "aggregation": "sum",
+              "sortBy": "Month Numbering",
+              "multiSeries": true,
+              "colors": ["#2563eb","#60a5fa"]
+            }
+          ]
+        },
+        {
+          "id": "articles",
+          "label": "Article Types",
+          "widgets": [
+            {
+              "id": "w-aay-art-table",
+              "type": "table",
+              "title": "Article Type Breakdown",
+              "span": 2,
+              "groupBy": "Article Type",
+              "columns": [
+                { "field": "Article Type", "label": "Article Type" },
+                { "field": "Style id", "label": "Styles", "aggregation": "countDistinct", "align": "right" },
+                { "field": "Total Sales Qty", "label": "Sales Qty", "aggregation": "sum", "align": "right", "format": "compact" },
+                { "field": "Revenue", "label": "Revenue", "aggregation": "sum", "align": "right", "format": "currency" },
+                { "field": "Return %", "label": "Return %", "aggregation": "avg", "align": "right", "format": "percent" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ar",
+      "navLabel": "Anouk Rustic",
+      "label": "Anouk Rustic",
+      "color": "#c2510e",
+      "gradient": "linear-gradient(135deg,#1a0800,#3a1200,#5c1900)",
+      "eyebrow": "UTM · Myntra · FY 2025–26 · Apr 2025 – Mar 2026",
+      "subtitle": "Anouk Rustic Brand Performance · Annual",
+      "filter": "Anouk Rustic",
+      "filterField": "Brand",
+      "kpis": [
+        { "id": "kpi-sq", "label": "Sales Qty", "field": "Total Sales Qty", "aggregation": "sum", "format": "compact", "color": "#fed7aa" },
+        { "id": "kpi-rev", "label": "Revenue", "field": "Revenue", "aggregation": "sum", "format": "currency", "color": "#fed7aa" },
+        { "id": "kpi-ret", "label": "Total Returns", "field": "Total Return Qty", "aggregation": "sum", "format": "compact", "color": "#fed7aa" },
+        { "id": "kpi-rr", "label": "Return Rate", "field": "Return %", "aggregation": "avg", "format": "percent", "color": "#fed7aa" },
+        { "id": "kpi-cost", "label": "Avg Cost", "field": "Cost", "aggregation": "avg", "format": "currency", "color": "#fed7aa" },
+        { "id": "kpi-ros", "label": "Avg ROS (active)", "field": "ROS", "aggregation": "avg", "format": "decimal", "color": "#fed7aa" },
+        { "id": "kpi-styles", "label": "Style IDs", "field": "Style id", "aggregation": "countDistinct", "format": "number", "color": "#fed7aa" }
+      ],
+      "tabs": [
+        {
+          "id": "overview",
+          "label": "Overview",
+          "widgets": [
+            {
+              "id": "w-ar-monthly-sales",
+              "type": "chart",
+              "title": "Monthly Sales Quantity",
+              "chartType": "bar",
+              "span": 1,
+              "height": "md",
+              "dataMapping": { "xAxis": "Month", "yAxis": "Total Sales Qty", "groupBy": null },
+              "aggregation": "sum",
+              "sortBy": "Month Numbering",
+              "color": "#c2510e"
+            },
+            {
+              "id": "w-ar-monthly-rev",
+              "type": "chart",
+              "title": "Monthly Revenue",
+              "chartType": "line",
+              "span": 1,
+              "height": "md",
+              "dataMapping": { "xAxis": "Month", "yAxis": "Revenue", "groupBy": null },
+              "aggregation": "sum",
+              "sortBy": "Month Numbering",
+              "color": "#fb923c"
+            },
+            {
+              "id": "w-ar-art-pie",
+              "type": "chart",
+              "title": "Sales by Article Type",
+              "chartType": "pie",
+              "span": 1,
+              "height": "sm",
+              "dataMapping": { "xAxis": "Article Type", "yAxis": "Total Sales Qty", "groupBy": null },
+              "aggregation": "sum"
+            },
+            {
+              "id": "w-ar-returns",
+              "type": "chart",
+              "title": "Returns vs Sales",
+              "chartType": "bar",
+              "span": 1,
+              "height": "sm",
+              "dataMapping": { "xAxis": "Month", "yAxis": ["Total Sales Qty","Total Return Qty"], "groupBy": null },
+              "aggregation": "sum",
+              "sortBy": "Month Numbering",
+              "multiSeries": true,
+              "colors": ["#c2510e","#f87171"]
+            }
+          ]
+        },
+        {
+          "id": "monthly",
+          "label": "Monthly",
+          "widgets": [
+            {
+              "id": "w-ar-trend",
+              "type": "chart",
+              "title": "Monthly Trend – Sales & Revenue",
+              "chartType": "line",
+              "span": 2,
+              "height": "lg",
+              "dataMapping": { "xAxis": "Month", "yAxis": ["Total Sales Qty","Revenue"], "groupBy": null },
+              "aggregation": "sum",
+              "sortBy": "Month Numbering",
+              "multiSeries": true,
+              "colors": ["#c2510e","#fb923c"]
+            }
+          ]
+        },
+        {
+          "id": "articles",
+          "label": "Article Types",
+          "widgets": [
+            {
+              "id": "w-ar-art-table",
+              "type": "table",
+              "title": "Article Type Breakdown",
+              "span": 2,
+              "groupBy": "Article Type",
+              "columns": [
+                { "field": "Article Type", "label": "Article Type" },
+                { "field": "Style id", "label": "Styles", "aggregation": "countDistinct", "align": "right" },
+                { "field": "Total Sales Qty", "label": "Sales Qty", "aggregation": "sum", "align": "right", "format": "compact" },
+                { "field": "Revenue", "label": "Revenue", "aggregation": "sum", "align": "right", "format": "currency" },
+                { "field": "Return %", "label": "Return %", "aggregation": "avg", "align": "right", "format": "percent" }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
