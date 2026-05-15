@@ -12,7 +12,7 @@ export default function App() {
   const { activeBrandId, editMode } = store;
   const activeProject = store.getActiveProject();
   const config = activeProject?.config;
-  const rawData = activeProject?.data || [];
+  const rawData = store.getActiveData();
 
   // Enrich data with calculated fields
   const data = useMemo(
@@ -39,7 +39,7 @@ export default function App() {
         <div className="flex-1 min-w-0" style={{ marginRight: rightOffset }}>
           {config.brands.map(brand => (
             <div key={brand.id} style={{ display: brand.id === activeBrandId ? 'block' : 'none' }}>
-              <BrandSection brand={brand} data={data} />
+              <BrandSection brand={brand} data={data} rosConfig={config.rosConfig} />
             </div>
           ))}
         </div>

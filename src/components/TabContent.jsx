@@ -43,11 +43,11 @@ function SortableWidget({ widget, brand, tab, data }) {
   );
 }
 
-export default function TabContent({ brand, tab, data }) {
+export default function TabContent({ brand, tab, data, rosConfig }) {
   const { editMode, addWidget, deleteTab, renameTab, reorderWidgets } = useDashboardStore();
 
   // Apply tier filter if this tab has one
-  const tabData = tab.tierFilter ? filterByTier(data, tab.tierFilter) : data;
+  const tabData = tab.tierFilter ? filterByTier(data, tab.tierFilter, rosConfig) : data;
 
   const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 8 } }));
 

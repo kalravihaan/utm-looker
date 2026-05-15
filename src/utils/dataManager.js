@@ -219,11 +219,14 @@ function formatCurrency(n) {
   return `₹${Math.round(n).toLocaleString('en-IN')}`;
 }
 
+const DEFAULT_THRESHOLDS = { veryFast: 1.5, fast: 0.7, moderate: 0.3 };
+
 // Determine velocity tier for a style
-export function getTier(ros) {
-  if (ros > 1.5) return 'very-fast';
-  if (ros >= 0.7) return 'fast';
-  if (ros > 0.3) return 'moderate';
+export function getTier(ros, thresholds = DEFAULT_THRESHOLDS) {
+  const t = { ...DEFAULT_THRESHOLDS, ...thresholds };
+  if (ros > t.veryFast) return 'very-fast';
+  if (ros >= t.fast) return 'fast';
+  if (ros > t.moderate) return 'moderate';
   if (ros > 0) return 'slow';
   return 'dead';
 }
@@ -253,7 +256,10 @@ export function getTierBgColor(tier) {
 }
 
 // Compute velocity tier breakdown from data
-export function computeTierBreakdown(data) {
+export function computeTierBreakdown(data, rosConfig = {}) {
+  const rosCol = rosConfig.useColumn || 'ROS';
+  const thresholds = rosConfig.thresholds;
+
   const styleMap = new Map();
   data.forEach(row => {
     const sid = row['Style id'];
@@ -262,14 +268,14 @@ export function computeTierBreakdown(data) {
     }
     const s = styleMap.get(sid);
     s.sales += Number(row['Total Sales Qty']) || 0;
-    s.ros += Number(row['ROS']) || 0;
+    s.ros += Number(row[rosCol]) || 0;
     s.count++;
   });
 
   const tiers = { 'very-fast': [], fast: [], moderate: [], slow: [], dead: [] };
   styleMap.forEach((val, sid) => {
     const avgRos = val.count ? val.ros / val.count : 0;
-    const tier = getTier(avgRos);
+    const tier = getTier(avgRos, thresholds);
     tiers[tier].push({ sid, sales: val.sales, ros: avgRos });
   });
 
@@ -308,13 +314,13 @@ export function exportConfig(config, data) {
 }
 
 // Compute avg ROS per style across all rows
-function computeStyleROS(data) {
+function computeStyleROS(data, rosCol = 'ROS') {
   const rosSum = new Map();
   const rosCount = new Map();
   data.forEach(row => {
     const sid = row['Style id'];
     if (sid == null) return;
-    rosSum.set(sid, (rosSum.get(sid) || 0) + (Number(row['ROS']) || 0));
+    rosSum.set(sid, (rosSum.get(sid) || 0) + (Number(row[rosCol]) || 0));
     rosCount.set(sid, (rosCount.get(sid) || 0) + 1);
   });
   const result = new Map();
@@ -325,12 +331,14 @@ function computeStyleROS(data) {
 }
 
 // Filter rows to only styles in a given velocity tier
-export function filterByTier(data, tier) {
+export function filterByTier(data, tier, rosConfig = {}) {
   if (!tier || !data.length) return data;
-  const styleROS = computeStyleROS(data);
+  const rosCol = rosConfig.useColumn || 'ROS';
+  const thresholds = rosConfig.thresholds;
+  const styleROS = computeStyleROS(data, rosCol);
   return data.filter(row => {
     const avgRos = styleROS.get(row['Style id']) || 0;
-    return getTier(avgRos) === tier;
+    return getTier(avgRos, thresholds) === tier;
   });
 }
 

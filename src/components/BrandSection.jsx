@@ -3,12 +3,11 @@ import { useDashboardStore } from '../store/dashboardStore';
 import { filterData, computeKPI, formatValue, computeTierBreakdown } from '../utils/dataManager';
 import TabContent from './TabContent';
 
-export default function BrandSection({ brand, data }) {
+export default function BrandSection({ brand, data, rosConfig }) {
   const { activeTabIds, setActiveTab, editMode, addTab } = useDashboardStore();
   const activeTabId = activeTabIds[brand.id] || brand.tabs[0]?.id;
   const brandData = filterData(data, brand);
-  const hasTierBreakdown = brand.id === 'overall' || !brand.filter;
-  const tiers = data.length ? computeTierBreakdown(brandData) : [];
+  const tiers = data.length ? computeTierBreakdown(brandData, rosConfig) : [];
 
   return (
     <div>
@@ -126,7 +125,7 @@ export default function BrandSection({ brand, data }) {
       <div>
         {brand.tabs.map(tab => (
           <div key={tab.id} style={{ display: tab.id === activeTabId ? 'block' : 'none' }}>
-            <TabContent brand={brand} tab={tab} data={brandData} />
+            <TabContent brand={brand} tab={tab} data={brandData} rosConfig={rosConfig} />
           </div>
         ))}
       </div>

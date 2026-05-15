@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useDashboardStore } from '../store/dashboardStore';
-import defaultConfig from '../config/defaultConfig.json';
 
 export default function ProjectSwitcher() {
   const {
     projects, activeProjectId, setActiveProject,
     addProject, renameProject, deleteProject,
+    sidebarCollapsed, toggleSidebar,
   } = useDashboardStore();
 
   const [editingId, setEditingId] = useState(null);
@@ -24,9 +24,41 @@ export default function ProjectSwitcher() {
 
   const handleDelete = (e, id) => {
     e.stopPropagation();
-    if (projects.length === 1) return; // keep at least one
+    if (projects.length === 1) return;
     if (confirm('Delete this dashboard? This cannot be undone.')) deleteProject(id);
   };
+
+  if (sidebarCollapsed) {
+    return (
+      <div
+        className="shrink-0 bg-white border-r border-gray-200 flex flex-col items-center py-2 gap-2"
+        style={{ width: 36, minHeight: 'calc(100vh - 50px)' }}
+      >
+        <button
+          onClick={toggleSidebar}
+          className="p-1.5 rounded text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 transition-colors"
+          title="Expand dashboards"
+        >
+          <ChevronRightIcon />
+        </button>
+        {projects.map(proj => {
+          const isActive = proj.id === activeProjectId;
+          return (
+            <button
+              key={proj.id}
+              onClick={() => setActiveProject(proj.id)}
+              title={proj.name}
+              className="w-5 h-5 rounded-full border-2 transition-all"
+              style={{
+                background: isActive ? '#818cf8' : '#e5e7eb',
+                borderColor: isActive ? '#6366f1' : 'transparent',
+              }}
+            />
+          );
+        })}
+      </div>
+    );
+  }
 
   return (
     <div
@@ -36,7 +68,16 @@ export default function ProjectSwitcher() {
       {/* Header */}
       <div className="px-3 py-2.5 border-b border-gray-100 bg-gray-50 flex items-center justify-between">
         <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Dashboards</span>
-        <span className="text-[9px] text-gray-300 font-mono">{projects.length}</span>
+        <div className="flex items-center gap-1">
+          <span className="text-[9px] text-gray-300 font-mono">{projects.length}</span>
+          <button
+            onClick={toggleSidebar}
+            className="p-0.5 rounded text-gray-300 hover:text-gray-600 hover:bg-gray-100 ml-1"
+            title="Collapse sidebar"
+          >
+            <ChevronLeftIcon />
+          </button>
+        </div>
       </div>
 
       {/* Project list */}
@@ -76,7 +117,6 @@ export default function ProjectSwitcher() {
                 </span>
               )}
 
-              {/* Actions (visible on hover) */}
               <div className="hidden group-hover:flex items-center gap-0.5 shrink-0">
                 <button
                   onClick={e => startRename(e, proj)}
@@ -111,7 +151,6 @@ export default function ProjectSwitcher() {
         </button>
       </div>
 
-      {/* Persistent tip */}
       <div className="px-3 pb-3 pt-1">
         <div className="text-[9px] text-gray-300 leading-tight text-center">
           Dashboards auto-save to browser storage
@@ -139,5 +178,17 @@ const TrashIcon = () => (
     <polyline points="3 6 5 6 21 6" />
     <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
     <path d="M10 11v6" /><path d="M14 11v6" />
+  </svg>
+);
+
+const ChevronLeftIcon = () => (
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+    <polyline points="15 18 9 12 15 6" />
+  </svg>
+);
+
+const ChevronRightIcon = () => (
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+    <polyline points="9 18 15 12 9 6" />
   </svg>
 );

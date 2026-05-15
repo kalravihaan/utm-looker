@@ -5,7 +5,7 @@ import { exportCSV, exportConfig, filterData } from '../utils/dataManager';
 export default function TopBar({ config }) {
   const {
     activeBrandId, setActiveBrand, editMode, toggleEditMode,
-    uploadData, uploading, getActiveProject, loadConfigFromFile,
+    uploadData, uploading, getActiveProject, getActiveData, loadConfigFromFile,
   } = useDashboardStore();
   const activeProject = getActiveProject();
   const fileRef = useRef(null);
@@ -20,14 +20,14 @@ export default function TopBar({ config }) {
   };
 
   const handleExportCSV = () => {
-    const data = activeProject?.data || [];
+    const data = getActiveData();
     const brand = config.brands.find(b => b.id === activeBrandId);
     const filtered = filterData(data, brand);
     exportCSV(filtered.length ? filtered : data, `${activeBrandId}-data.csv`);
   };
 
   const handleSave = () => {
-    exportConfig(config, activeProject?.data || []);
+    exportConfig(config, getActiveData());
   };
 
   const handleLoadConfig = (e) => {
