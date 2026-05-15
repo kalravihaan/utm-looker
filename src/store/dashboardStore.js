@@ -1,12 +1,17 @@
 import { create } from 'zustand';
+import { persist, createJSONStorage } from 'zustand/middleware';
 import defaultConfig from '../config/defaultConfig.json';
 import { parseFile, filterData } from '../utils/dataManager';
 
 const generateId = () => `w-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
 
-export const useDashboardStore = create((set, get) => ({
+const DEFAULT_PROJECT = { id: 'default', name: 'UTM FY 2025-26', config: defaultConfig, data: [] };
+
+export const useDashboardStore = create(
+  persist(
+    (set, get) => ({
   // Dashboard projects list
-  projects: [{ id: 'default', name: 'UTM FY 2025-26', config: defaultConfig, data: [] }],
+  projects: [DEFAULT_PROJECT],
   activeProjectId: 'default',
 
   // UI state
@@ -43,7 +48,7 @@ export const useDashboardStore = create((set, get) => ({
   deleteProject: (id) => set(s => {
     const projects = s.projects.filter(p => p.id !== id);
     return {
-      projects: projects.length ? projects : [{ id: 'default', name: 'New Dashboard', config: defaultConfig, data: [] }],
+      projects: projects.length ? projects : [DEFAULT_PROJECT],
       activeProjectId: projects[0]?.id || 'default',
     };
   }),
@@ -336,4 +341,34 @@ export const useDashboardStore = create((set, get) => ({
       activeProjectId: id,
     }));
   },
-}));
+    }),
+    {
+      name: 'utm-looker-v1',
+      storage: createJSONStorage(() => {
+        // Graceful fallback if localStorage is unavailable
+        try { return localStorage; } catch { return sessionStorage; }
+      }),
+      // Only persist project configs + IDs. Skip transient UI state.
+      partialize: (state) => ({
+        projects: state.projects.map(p => ({
+          id: p.id,
+          name: p.name,
+          config: p.config,
+          // Cap data rows to avoid exceeding the ~5 MB localStorage limit
+          data: (p.data || []).slice(0, 50000),
+        })),
+        activeProjectId: state.activeProjectId,
+      }),
+      // Merge persisted state with fresh defaults so new fields are picked up
+      merge: (persisted, current) => ({
+        ...current,
+        ...persisted,
+        // Always reset transient UI state
+        editMode: false,
+        selectedWidgetId: null,
+        uploading: false,
+        uploadError: null,
+      }),
+    }
+  )
+);
