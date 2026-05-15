@@ -306,3 +306,76 @@ export function exportConfig(config, data) {
   a.click();
   URL.revokeObjectURL(url);
 }
+
+// Compute avg ROS per style across all rows
+function computeStyleROS(data) {
+  const rosSum = new Map();
+  const rosCount = new Map();
+  data.forEach(row => {
+    const sid = row['Style id'];
+    if (sid == null) return;
+    rosSum.set(sid, (rosSum.get(sid) || 0) + (Number(row['ROS']) || 0));
+    rosCount.set(sid, (rosCount.get(sid) || 0) + 1);
+  });
+  const result = new Map();
+  rosSum.forEach((sum, sid) => {
+    result.set(sid, rosCount.get(sid) ? sum / rosCount.get(sid) : 0);
+  });
+  return result;
+}
+
+// Filter rows to only styles in a given velocity tier
+export function filterByTier(data, tier) {
+  if (!tier || !data.length) return data;
+  const styleROS = computeStyleROS(data);
+  return data.filter(row => {
+    const avgRos = styleROS.get(row['Style id']) || 0;
+    return getTier(avgRos) === tier;
+  });
+}
+
+// Safely evaluate a formula against a data row
+export function evaluateFormula(formula, row, fieldNames) {
+  const sorted = fieldNames.slice().sort((a, b) => b.length - a.length);
+  let expr = formula;
+  sorted.forEach(field => {
+    const escaped = field.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    try {
+      expr = expr.replace(new RegExp(escaped, 'g'), String(Number(row[field]) || 0));
+    } catch(e) {}
+  });
+  try {
+    // eslint-disable-next-line no-new-func
+    const result = new Function(`"use strict"; return (${expr})`)();
+    return isFinite(result) ? result : 0;
+  } catch { return 0; }
+}
+
+// Apply calculated fields to each row, returning enriched data
+export function applyCalculatedFields(data, calculatedFields) {
+  if (!calculatedFields?.length || !data.length) return data;
+  const fieldNames = Object.keys(data[0]);
+  return data.map(row => {
+    const enriched = { ...row };
+    calculatedFields.forEach(cf => {
+      enriched[cf.name] = evaluateFormula(cf.formula, row, fieldNames);
+    });
+    return enriched;
+  });
+}
+
+// Categorise data columns into dimensions vs metrics
+export function getDataColumns(data) {
+  if (!data.length) return { dimensions: [], metrics: [] };
+  const sample = data[0];
+  const dimensions = [];
+  const metrics = [];
+  Object.entries(sample).forEach(([key, val]) => {
+    if (typeof val === 'number' || (!isNaN(Number(val)) && val !== '' && val !== null)) {
+      metrics.push(key);
+    } else {
+      dimensions.push(key);
+    }
+  });
+  return { dimensions, metrics };
+}

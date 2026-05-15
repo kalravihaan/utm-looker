@@ -295,6 +295,37 @@ export const useDashboardStore = create((set, get) => ({
     }));
   },
 
+  // Calculated fields CRUD
+  addCalculatedField: (field) => {
+    const id = `cf-${Date.now()}`;
+    get().updateConfig(c => ({
+      ...c,
+      calculatedFields: [...(c.calculatedFields || []), {
+        id,
+        name: field.name || 'New Field',
+        formula: field.formula || '0',
+        format: field.format || 'number',
+        description: field.description || '',
+      }],
+    }));
+  },
+
+  updateCalculatedField: (id, patch) => {
+    get().updateConfig(c => ({
+      ...c,
+      calculatedFields: (c.calculatedFields || []).map(cf =>
+        cf.id === id ? { ...cf, ...patch } : cf
+      ),
+    }));
+  },
+
+  deleteCalculatedField: (id) => {
+    get().updateConfig(c => ({
+      ...c,
+      calculatedFields: (c.calculatedFields || []).filter(cf => cf.id !== id),
+    }));
+  },
+
   // Load config from JSON file
   loadConfigFromFile: async (file) => {
     const text = await file.text();
