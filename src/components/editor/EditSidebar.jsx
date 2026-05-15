@@ -4,7 +4,8 @@ import WidgetEditor from './WidgetEditor';
 import BrandEditor from './BrandEditor';
 
 export default function EditSidebar() {
-  const { editMode, selectedWidgetId, setSelectedWidget, activeBrandId, activeProject, activeTabIds } = useDashboardStore();
+  const { editMode, selectedWidgetId, setSelectedWidget, activeBrandId, getActiveProject, activeTabIds } = useDashboardStore();
+  const activeProject = getActiveProject();
 
   if (!editMode) return null;
 

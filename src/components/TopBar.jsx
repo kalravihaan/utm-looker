@@ -5,8 +5,9 @@ import { exportCSV, exportConfig, filterData } from '../utils/dataManager';
 export default function TopBar({ config }) {
   const {
     activeBrandId, setActiveBrand, editMode, toggleEditMode,
-    uploadData, uploading, activeProject, loadConfigFromFile,
+    uploadData, uploading, getActiveProject, loadConfigFromFile,
   } = useDashboardStore();
+  const activeProject = getActiveProject();
   const fileRef = useRef(null);
   const configFileRef = useRef(null);
 

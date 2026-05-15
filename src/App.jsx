@@ -6,7 +6,9 @@ import Sidebar from './components/Sidebar';
 import EditSidebar from './components/editor/EditSidebar';
 
 export default function App() {
-  const { activeProject, activeBrandId, editMode, projects, activeProjectId } = useDashboardStore();
+  const store = useDashboardStore();
+  const { activeBrandId, editMode } = store;
+  const activeProject = store.getActiveProject();
   const config = activeProject?.config;
   const data = activeProject?.data || [];
 

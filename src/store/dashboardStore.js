@@ -17,8 +17,9 @@ export const useDashboardStore = create((set, get) => ({
   uploading: false,
   uploadError: null,
 
-  // Derived data access
-  get activeProject() {
+  // Derived data access — use getActiveProject() instead of a JS getter
+  // (Zustand flattens getters to plain values on set(), breaking reactivity)
+  getActiveProject: () => {
     const s = get();
     return s.projects.find(p => p.id === s.activeProjectId) || s.projects[0];
   },
@@ -124,7 +125,7 @@ export const useDashboardStore = create((set, get) => ({
     }));
     set(s => ({
       activeBrandId: s.activeBrandId === brandId
-        ? (get().activeProject?.config.brands[0]?.id || 'overall')
+        ? (get().getActiveProject()?.config.brands[0]?.id || 'overall')
         : s.activeBrandId,
     }));
   },

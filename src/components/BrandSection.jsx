@@ -19,15 +19,16 @@ export default function BrandSection({ brand, data }) {
           <div className="text-[10px] tracking-[0.18em] uppercase text-white/40 mb-1">
             {brand.eyebrow}
           </div>
-          <div
-            className="text-[34px] font-bold text-white leading-tight mb-0.5 font-serif"
-            style={brand.titleStyle ? { cssText: brand.titleStyle } : {}}
-            dangerouslySetInnerHTML={brand.titleStyle
-              ? { __html: `<span style="${brand.titleStyle}">${brand.label}</span>` }
-              : undefined}
-          >
-            {!brand.titleStyle && brand.label}
-          </div>
+          {brand.titleStyle ? (
+            <div
+              className="text-[34px] font-bold leading-tight mb-0.5 font-serif"
+              dangerouslySetInnerHTML={{ __html: `<span style="${brand.titleStyle}">${brand.label}</span>` }}
+            />
+          ) : (
+            <div className="text-[34px] font-bold text-white leading-tight mb-0.5 font-serif">
+              {brand.label}
+            </div>
+          )}
           <div className="text-[10px] text-white/40 tracking-[0.06em] uppercase mb-5">
             {brand.subtitle}
           </div>
