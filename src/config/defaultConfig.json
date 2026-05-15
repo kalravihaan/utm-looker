@@ -166,6 +166,42 @@
               ]
             }
           ]
+        },
+        {
+          "id": "very-fast", "label": "Very Fast", "tierFilter": "very-fast",
+          "widgets": [
+            { "id": "w-ov-vf-chart", "type": "chart", "title": "Monthly Sales – Very Fast", "chartType": "bar", "span": 1, "height": "md", "dataMapping": { "xAxis": "Month", "yAxis": "Total Sales Qty", "groupBy": null }, "aggregation": "sum", "sortBy": "Month Numbering", "color": "#059669" },
+            { "id": "w-ov-vf-rev", "type": "chart", "title": "Monthly Revenue – Very Fast", "chartType": "line", "span": 1, "height": "md", "dataMapping": { "xAxis": "Month", "yAxis": "Revenue", "groupBy": null }, "aggregation": "sum", "sortBy": "Month Numbering", "color": "#059669" },
+            { "id": "w-ov-vf-table", "type": "table", "title": "Very Fast Style Details", "span": 2, "groupBy": "Style id", "columns": [ { "field": "Style id", "label": "Style ID" }, { "field": "Article Type", "label": "Article Type" }, { "field": "Total Sales Qty", "label": "Sales Qty", "aggregation": "sum", "align": "right", "format": "compact" }, { "field": "Revenue", "label": "Revenue", "aggregation": "sum", "align": "right", "format": "currency" }, { "field": "Total Return Qty", "label": "Returns", "aggregation": "sum", "align": "right", "format": "compact" }, { "field": "Return %", "label": "Return %", "aggregation": "avg", "align": "right", "format": "percent" }, { "field": "ROS", "label": "Avg ROS", "aggregation": "avg", "align": "right", "format": "decimal" } ] }
+          ]
+        },
+        {
+          "id": "fast", "label": "Fast", "tierFilter": "fast",
+          "widgets": [
+            { "id": "w-ov-f-chart", "type": "chart", "title": "Monthly Sales – Fast", "chartType": "bar", "span": 1, "height": "md", "dataMapping": { "xAxis": "Month", "yAxis": "Total Sales Qty", "groupBy": null }, "aggregation": "sum", "sortBy": "Month Numbering", "color": "#16a34a" },
+            { "id": "w-ov-f-rev", "type": "chart", "title": "Monthly Revenue – Fast", "chartType": "line", "span": 1, "height": "md", "dataMapping": { "xAxis": "Month", "yAxis": "Revenue", "groupBy": null }, "aggregation": "sum", "sortBy": "Month Numbering", "color": "#16a34a" },
+            { "id": "w-ov-f-table", "type": "table", "title": "Fast Style Details", "span": 2, "groupBy": "Style id", "columns": [ { "field": "Style id", "label": "Style ID" }, { "field": "Article Type", "label": "Article Type" }, { "field": "Total Sales Qty", "label": "Sales Qty", "aggregation": "sum", "align": "right", "format": "compact" }, { "field": "Revenue", "label": "Revenue", "aggregation": "sum", "align": "right", "format": "currency" }, { "field": "Total Return Qty", "label": "Returns", "aggregation": "sum", "align": "right", "format": "compact" }, { "field": "Return %", "label": "Return %", "aggregation": "avg", "align": "right", "format": "percent" }, { "field": "ROS", "label": "Avg ROS", "aggregation": "avg", "align": "right", "format": "decimal" } ] }
+          ]
+        },
+        {
+          "id": "moderate", "label": "Moderate", "tierFilter": "moderate",
+          "widgets": [
+            { "id": "w-ov-m-chart", "type": "chart", "title": "Monthly Sales – Moderate", "chartType": "bar", "span": 1, "height": "md", "dataMapping": { "xAxis": "Month", "yAxis": "Total Sales Qty", "groupBy": null }, "aggregation": "sum", "sortBy": "Month Numbering", "color": "#d97706" },
+            { "id": "w-ov-m-table", "type": "table", "title": "Moderate Style Details", "span": 2, "groupBy": "Style id", "columns": [ { "field": "Style id", "label": "Style ID" }, { "field": "Article Type", "label": "Article Type" }, { "field": "Total Sales Qty", "label": "Sales Qty", "aggregation": "sum", "align": "right", "format": "compact" }, { "field": "Revenue", "label": "Revenue", "aggregation": "sum", "align": "right", "format": "currency" }, { "field": "Return %", "label": "Return %", "aggregation": "avg", "align": "right", "format": "percent" }, { "field": "ROS", "label": "Avg ROS", "aggregation": "avg", "align": "right", "format": "decimal" } ] }
+          ]
+        },
+        {
+          "id": "slow", "label": "Slow", "tierFilter": "slow",
+          "widgets": [
+            { "id": "w-ov-s-chart", "type": "chart", "title": "Monthly Sales – Slow", "chartType": "bar", "span": 1, "height": "md", "dataMapping": { "xAxis": "Month", "yAxis": "Total Sales Qty", "groupBy": null }, "aggregation": "sum", "sortBy": "Month Numbering", "color": "#dc2626" },
+            { "id": "w-ov-s-table", "type": "table", "title": "Slow Style Details", "span": 2, "groupBy": "Style id", "columns": [ { "field": "Style id", "label": "Style ID" }, { "field": "Article Type", "label": "Article Type" }, { "field": "Total Sales Qty", "label": "Sales Qty", "aggregation": "sum", "align": "right", "format": "compact" }, { "field": "Revenue", "label": "Revenue", "aggregation": "sum", "align": "right", "format": "currency" }, { "field": "Return %", "label": "Return %", "aggregation": "avg", "align": "right", "format": "percent" }, { "field": "ROS", "label": "Avg ROS", "aggregation": "avg", "align": "right", "format": "decimal" } ] }
+          ]
+        },
+        {
+          "id": "dead", "label": "Dead", "tierFilter": "dead",
+          "widgets": [
+            { "id": "w-ov-d-table", "type": "table", "title": "Dead Styles (ROS = 0)", "span": 2, "groupBy": "Style id", "columns": [ { "field": "Style id", "label": "Style ID" }, { "field": "Article Type", "label": "Article Type" }, { "field": "Cost", "label": "Cost", "aggregation": "avg", "align": "right", "format": "currency" }, { "field": "Inventory", "label": "Inventory", "aggregation": "sum", "align": "right", "format": "number" }, { "field": "Revenue", "label": "Revenue", "aggregation": "sum", "align": "right", "format": "currency" }, { "field": "ROS", "label": "Avg ROS", "aggregation": "avg", "align": "right", "format": "decimal" } ] }
+          ]
         }
       ]
     },
@@ -281,6 +317,42 @@
               ]
             }
           ]
+        },
+        {
+          "id": "very-fast", "label": "Very Fast", "tierFilter": "very-fast",
+          "widgets": [
+            { "id": "w-sg-vf-chart", "type": "chart", "title": "Monthly Sales – Very Fast", "chartType": "bar", "span": 1, "height": "md", "dataMapping": { "xAxis": "Month", "yAxis": "Total Sales Qty", "groupBy": null }, "aggregation": "sum", "sortBy": "Month Numbering", "color": "#059669" },
+            { "id": "w-sg-vf-rev", "type": "chart", "title": "Monthly Revenue – Very Fast", "chartType": "line", "span": 1, "height": "md", "dataMapping": { "xAxis": "Month", "yAxis": "Revenue", "groupBy": null }, "aggregation": "sum", "sortBy": "Month Numbering", "color": "#059669" },
+            { "id": "w-sg-vf-table", "type": "table", "title": "Very Fast Style Details", "span": 2, "groupBy": "Style id", "columns": [ { "field": "Style id", "label": "Style ID" }, { "field": "Article Type", "label": "Article Type" }, { "field": "Total Sales Qty", "label": "Sales Qty", "aggregation": "sum", "align": "right", "format": "compact" }, { "field": "Revenue", "label": "Revenue", "aggregation": "sum", "align": "right", "format": "currency" }, { "field": "Total Return Qty", "label": "Returns", "aggregation": "sum", "align": "right", "format": "compact" }, { "field": "Return %", "label": "Return %", "aggregation": "avg", "align": "right", "format": "percent" }, { "field": "ROS", "label": "Avg ROS", "aggregation": "avg", "align": "right", "format": "decimal" } ] }
+          ]
+        },
+        {
+          "id": "fast", "label": "Fast", "tierFilter": "fast",
+          "widgets": [
+            { "id": "w-sg-f-chart", "type": "chart", "title": "Monthly Sales – Fast", "chartType": "bar", "span": 1, "height": "md", "dataMapping": { "xAxis": "Month", "yAxis": "Total Sales Qty", "groupBy": null }, "aggregation": "sum", "sortBy": "Month Numbering", "color": "#16a34a" },
+            { "id": "w-sg-f-rev", "type": "chart", "title": "Monthly Revenue – Fast", "chartType": "line", "span": 1, "height": "md", "dataMapping": { "xAxis": "Month", "yAxis": "Revenue", "groupBy": null }, "aggregation": "sum", "sortBy": "Month Numbering", "color": "#16a34a" },
+            { "id": "w-sg-f-table", "type": "table", "title": "Fast Style Details", "span": 2, "groupBy": "Style id", "columns": [ { "field": "Style id", "label": "Style ID" }, { "field": "Article Type", "label": "Article Type" }, { "field": "Total Sales Qty", "label": "Sales Qty", "aggregation": "sum", "align": "right", "format": "compact" }, { "field": "Revenue", "label": "Revenue", "aggregation": "sum", "align": "right", "format": "currency" }, { "field": "Total Return Qty", "label": "Returns", "aggregation": "sum", "align": "right", "format": "compact" }, { "field": "Return %", "label": "Return %", "aggregation": "avg", "align": "right", "format": "percent" }, { "field": "ROS", "label": "Avg ROS", "aggregation": "avg", "align": "right", "format": "decimal" } ] }
+          ]
+        },
+        {
+          "id": "moderate", "label": "Moderate", "tierFilter": "moderate",
+          "widgets": [
+            { "id": "w-sg-m-chart", "type": "chart", "title": "Monthly Sales – Moderate", "chartType": "bar", "span": 1, "height": "md", "dataMapping": { "xAxis": "Month", "yAxis": "Total Sales Qty", "groupBy": null }, "aggregation": "sum", "sortBy": "Month Numbering", "color": "#d97706" },
+            { "id": "w-sg-m-table", "type": "table", "title": "Moderate Style Details", "span": 2, "groupBy": "Style id", "columns": [ { "field": "Style id", "label": "Style ID" }, { "field": "Article Type", "label": "Article Type" }, { "field": "Total Sales Qty", "label": "Sales Qty", "aggregation": "sum", "align": "right", "format": "compact" }, { "field": "Revenue", "label": "Revenue", "aggregation": "sum", "align": "right", "format": "currency" }, { "field": "Return %", "label": "Return %", "aggregation": "avg", "align": "right", "format": "percent" }, { "field": "ROS", "label": "Avg ROS", "aggregation": "avg", "align": "right", "format": "decimal" } ] }
+          ]
+        },
+        {
+          "id": "slow", "label": "Slow", "tierFilter": "slow",
+          "widgets": [
+            { "id": "w-sg-s-chart", "type": "chart", "title": "Monthly Sales – Slow", "chartType": "bar", "span": 1, "height": "md", "dataMapping": { "xAxis": "Month", "yAxis": "Total Sales Qty", "groupBy": null }, "aggregation": "sum", "sortBy": "Month Numbering", "color": "#dc2626" },
+            { "id": "w-sg-s-table", "type": "table", "title": "Slow Style Details", "span": 2, "groupBy": "Style id", "columns": [ { "field": "Style id", "label": "Style ID" }, { "field": "Article Type", "label": "Article Type" }, { "field": "Total Sales Qty", "label": "Sales Qty", "aggregation": "sum", "align": "right", "format": "compact" }, { "field": "Revenue", "label": "Revenue", "aggregation": "sum", "align": "right", "format": "currency" }, { "field": "Return %", "label": "Return %", "aggregation": "avg", "align": "right", "format": "percent" }, { "field": "ROS", "label": "Avg ROS", "aggregation": "avg", "align": "right", "format": "decimal" } ] }
+          ]
+        },
+        {
+          "id": "dead", "label": "Dead", "tierFilter": "dead",
+          "widgets": [
+            { "id": "w-sg-d-table", "type": "table", "title": "Dead Styles (ROS = 0)", "span": 2, "groupBy": "Style id", "columns": [ { "field": "Style id", "label": "Style ID" }, { "field": "Article Type", "label": "Article Type" }, { "field": "Cost", "label": "Cost", "aggregation": "avg", "align": "right", "format": "currency" }, { "field": "Inventory", "label": "Inventory", "aggregation": "sum", "align": "right", "format": "number" }, { "field": "Revenue", "label": "Revenue", "aggregation": "sum", "align": "right", "format": "currency" }, { "field": "ROS", "label": "Avg ROS", "aggregation": "avg", "align": "right", "format": "decimal" } ] }
+          ]
         }
       ]
     },
@@ -394,6 +466,42 @@
                 { "field": "Return %", "label": "Return %", "aggregation": "avg", "align": "right", "format": "percent" }
               ]
             }
+          ]
+        },
+        {
+          "id": "very-fast", "label": "Very Fast", "tierFilter": "very-fast",
+          "widgets": [
+            { "id": "w-hop-vf-chart", "type": "chart", "title": "Monthly Sales – Very Fast", "chartType": "bar", "span": 1, "height": "md", "dataMapping": { "xAxis": "Month", "yAxis": "Total Sales Qty", "groupBy": null }, "aggregation": "sum", "sortBy": "Month Numbering", "color": "#059669" },
+            { "id": "w-hop-vf-rev", "type": "chart", "title": "Monthly Revenue – Very Fast", "chartType": "line", "span": 1, "height": "md", "dataMapping": { "xAxis": "Month", "yAxis": "Revenue", "groupBy": null }, "aggregation": "sum", "sortBy": "Month Numbering", "color": "#059669" },
+            { "id": "w-hop-vf-table", "type": "table", "title": "Very Fast Style Details", "span": 2, "groupBy": "Style id", "columns": [ { "field": "Style id", "label": "Style ID" }, { "field": "Article Type", "label": "Article Type" }, { "field": "Total Sales Qty", "label": "Sales Qty", "aggregation": "sum", "align": "right", "format": "compact" }, { "field": "Revenue", "label": "Revenue", "aggregation": "sum", "align": "right", "format": "currency" }, { "field": "Total Return Qty", "label": "Returns", "aggregation": "sum", "align": "right", "format": "compact" }, { "field": "Return %", "label": "Return %", "aggregation": "avg", "align": "right", "format": "percent" }, { "field": "ROS", "label": "Avg ROS", "aggregation": "avg", "align": "right", "format": "decimal" } ] }
+          ]
+        },
+        {
+          "id": "fast", "label": "Fast", "tierFilter": "fast",
+          "widgets": [
+            { "id": "w-hop-f-chart", "type": "chart", "title": "Monthly Sales – Fast", "chartType": "bar", "span": 1, "height": "md", "dataMapping": { "xAxis": "Month", "yAxis": "Total Sales Qty", "groupBy": null }, "aggregation": "sum", "sortBy": "Month Numbering", "color": "#16a34a" },
+            { "id": "w-hop-f-rev", "type": "chart", "title": "Monthly Revenue – Fast", "chartType": "line", "span": 1, "height": "md", "dataMapping": { "xAxis": "Month", "yAxis": "Revenue", "groupBy": null }, "aggregation": "sum", "sortBy": "Month Numbering", "color": "#16a34a" },
+            { "id": "w-hop-f-table", "type": "table", "title": "Fast Style Details", "span": 2, "groupBy": "Style id", "columns": [ { "field": "Style id", "label": "Style ID" }, { "field": "Article Type", "label": "Article Type" }, { "field": "Total Sales Qty", "label": "Sales Qty", "aggregation": "sum", "align": "right", "format": "compact" }, { "field": "Revenue", "label": "Revenue", "aggregation": "sum", "align": "right", "format": "currency" }, { "field": "Total Return Qty", "label": "Returns", "aggregation": "sum", "align": "right", "format": "compact" }, { "field": "Return %", "label": "Return %", "aggregation": "avg", "align": "right", "format": "percent" }, { "field": "ROS", "label": "Avg ROS", "aggregation": "avg", "align": "right", "format": "decimal" } ] }
+          ]
+        },
+        {
+          "id": "moderate", "label": "Moderate", "tierFilter": "moderate",
+          "widgets": [
+            { "id": "w-hop-m-chart", "type": "chart", "title": "Monthly Sales – Moderate", "chartType": "bar", "span": 1, "height": "md", "dataMapping": { "xAxis": "Month", "yAxis": "Total Sales Qty", "groupBy": null }, "aggregation": "sum", "sortBy": "Month Numbering", "color": "#d97706" },
+            { "id": "w-hop-m-table", "type": "table", "title": "Moderate Style Details", "span": 2, "groupBy": "Style id", "columns": [ { "field": "Style id", "label": "Style ID" }, { "field": "Article Type", "label": "Article Type" }, { "field": "Total Sales Qty", "label": "Sales Qty", "aggregation": "sum", "align": "right", "format": "compact" }, { "field": "Revenue", "label": "Revenue", "aggregation": "sum", "align": "right", "format": "currency" }, { "field": "Return %", "label": "Return %", "aggregation": "avg", "align": "right", "format": "percent" }, { "field": "ROS", "label": "Avg ROS", "aggregation": "avg", "align": "right", "format": "decimal" } ] }
+          ]
+        },
+        {
+          "id": "slow", "label": "Slow", "tierFilter": "slow",
+          "widgets": [
+            { "id": "w-hop-s-chart", "type": "chart", "title": "Monthly Sales – Slow", "chartType": "bar", "span": 1, "height": "md", "dataMapping": { "xAxis": "Month", "yAxis": "Total Sales Qty", "groupBy": null }, "aggregation": "sum", "sortBy": "Month Numbering", "color": "#dc2626" },
+            { "id": "w-hop-s-table", "type": "table", "title": "Slow Style Details", "span": 2, "groupBy": "Style id", "columns": [ { "field": "Style id", "label": "Style ID" }, { "field": "Article Type", "label": "Article Type" }, { "field": "Total Sales Qty", "label": "Sales Qty", "aggregation": "sum", "align": "right", "format": "compact" }, { "field": "Revenue", "label": "Revenue", "aggregation": "sum", "align": "right", "format": "currency" }, { "field": "Return %", "label": "Return %", "aggregation": "avg", "align": "right", "format": "percent" }, { "field": "ROS", "label": "Avg ROS", "aggregation": "avg", "align": "right", "format": "decimal" } ] }
+          ]
+        },
+        {
+          "id": "dead", "label": "Dead", "tierFilter": "dead",
+          "widgets": [
+            { "id": "w-hop-d-table", "type": "table", "title": "Dead Styles (ROS = 0)", "span": 2, "groupBy": "Style id", "columns": [ { "field": "Style id", "label": "Style ID" }, { "field": "Article Type", "label": "Article Type" }, { "field": "Cost", "label": "Cost", "aggregation": "avg", "align": "right", "format": "currency" }, { "field": "Inventory", "label": "Inventory", "aggregation": "sum", "align": "right", "format": "number" }, { "field": "Revenue", "label": "Revenue", "aggregation": "sum", "align": "right", "format": "currency" }, { "field": "ROS", "label": "Avg ROS", "aggregation": "avg", "align": "right", "format": "decimal" } ] }
           ]
         }
       ]
@@ -509,6 +617,42 @@
               ]
             }
           ]
+        },
+        {
+          "id": "very-fast", "label": "Very Fast", "tierFilter": "very-fast",
+          "widgets": [
+            { "id": "w-aay-vf-chart", "type": "chart", "title": "Monthly Sales – Very Fast", "chartType": "bar", "span": 1, "height": "md", "dataMapping": { "xAxis": "Month", "yAxis": "Total Sales Qty", "groupBy": null }, "aggregation": "sum", "sortBy": "Month Numbering", "color": "#059669" },
+            { "id": "w-aay-vf-rev", "type": "chart", "title": "Monthly Revenue – Very Fast", "chartType": "line", "span": 1, "height": "md", "dataMapping": { "xAxis": "Month", "yAxis": "Revenue", "groupBy": null }, "aggregation": "sum", "sortBy": "Month Numbering", "color": "#059669" },
+            { "id": "w-aay-vf-table", "type": "table", "title": "Very Fast Style Details", "span": 2, "groupBy": "Style id", "columns": [ { "field": "Style id", "label": "Style ID" }, { "field": "Article Type", "label": "Article Type" }, { "field": "Total Sales Qty", "label": "Sales Qty", "aggregation": "sum", "align": "right", "format": "compact" }, { "field": "Revenue", "label": "Revenue", "aggregation": "sum", "align": "right", "format": "currency" }, { "field": "Total Return Qty", "label": "Returns", "aggregation": "sum", "align": "right", "format": "compact" }, { "field": "Return %", "label": "Return %", "aggregation": "avg", "align": "right", "format": "percent" }, { "field": "ROS", "label": "Avg ROS", "aggregation": "avg", "align": "right", "format": "decimal" } ] }
+          ]
+        },
+        {
+          "id": "fast", "label": "Fast", "tierFilter": "fast",
+          "widgets": [
+            { "id": "w-aay-f-chart", "type": "chart", "title": "Monthly Sales – Fast", "chartType": "bar", "span": 1, "height": "md", "dataMapping": { "xAxis": "Month", "yAxis": "Total Sales Qty", "groupBy": null }, "aggregation": "sum", "sortBy": "Month Numbering", "color": "#16a34a" },
+            { "id": "w-aay-f-rev", "type": "chart", "title": "Monthly Revenue – Fast", "chartType": "line", "span": 1, "height": "md", "dataMapping": { "xAxis": "Month", "yAxis": "Revenue", "groupBy": null }, "aggregation": "sum", "sortBy": "Month Numbering", "color": "#16a34a" },
+            { "id": "w-aay-f-table", "type": "table", "title": "Fast Style Details", "span": 2, "groupBy": "Style id", "columns": [ { "field": "Style id", "label": "Style ID" }, { "field": "Article Type", "label": "Article Type" }, { "field": "Total Sales Qty", "label": "Sales Qty", "aggregation": "sum", "align": "right", "format": "compact" }, { "field": "Revenue", "label": "Revenue", "aggregation": "sum", "align": "right", "format": "currency" }, { "field": "Total Return Qty", "label": "Returns", "aggregation": "sum", "align": "right", "format": "compact" }, { "field": "Return %", "label": "Return %", "aggregation": "avg", "align": "right", "format": "percent" }, { "field": "ROS", "label": "Avg ROS", "aggregation": "avg", "align": "right", "format": "decimal" } ] }
+          ]
+        },
+        {
+          "id": "moderate", "label": "Moderate", "tierFilter": "moderate",
+          "widgets": [
+            { "id": "w-aay-m-chart", "type": "chart", "title": "Monthly Sales – Moderate", "chartType": "bar", "span": 1, "height": "md", "dataMapping": { "xAxis": "Month", "yAxis": "Total Sales Qty", "groupBy": null }, "aggregation": "sum", "sortBy": "Month Numbering", "color": "#d97706" },
+            { "id": "w-aay-m-table", "type": "table", "title": "Moderate Style Details", "span": 2, "groupBy": "Style id", "columns": [ { "field": "Style id", "label": "Style ID" }, { "field": "Article Type", "label": "Article Type" }, { "field": "Total Sales Qty", "label": "Sales Qty", "aggregation": "sum", "align": "right", "format": "compact" }, { "field": "Revenue", "label": "Revenue", "aggregation": "sum", "align": "right", "format": "currency" }, { "field": "Return %", "label": "Return %", "aggregation": "avg", "align": "right", "format": "percent" }, { "field": "ROS", "label": "Avg ROS", "aggregation": "avg", "align": "right", "format": "decimal" } ] }
+          ]
+        },
+        {
+          "id": "slow", "label": "Slow", "tierFilter": "slow",
+          "widgets": [
+            { "id": "w-aay-s-chart", "type": "chart", "title": "Monthly Sales – Slow", "chartType": "bar", "span": 1, "height": "md", "dataMapping": { "xAxis": "Month", "yAxis": "Total Sales Qty", "groupBy": null }, "aggregation": "sum", "sortBy": "Month Numbering", "color": "#dc2626" },
+            { "id": "w-aay-s-table", "type": "table", "title": "Slow Style Details", "span": 2, "groupBy": "Style id", "columns": [ { "field": "Style id", "label": "Style ID" }, { "field": "Article Type", "label": "Article Type" }, { "field": "Total Sales Qty", "label": "Sales Qty", "aggregation": "sum", "align": "right", "format": "compact" }, { "field": "Revenue", "label": "Revenue", "aggregation": "sum", "align": "right", "format": "currency" }, { "field": "Return %", "label": "Return %", "aggregation": "avg", "align": "right", "format": "percent" }, { "field": "ROS", "label": "Avg ROS", "aggregation": "avg", "align": "right", "format": "decimal" } ] }
+          ]
+        },
+        {
+          "id": "dead", "label": "Dead", "tierFilter": "dead",
+          "widgets": [
+            { "id": "w-aay-d-table", "type": "table", "title": "Dead Styles (ROS = 0)", "span": 2, "groupBy": "Style id", "columns": [ { "field": "Style id", "label": "Style ID" }, { "field": "Article Type", "label": "Article Type" }, { "field": "Cost", "label": "Cost", "aggregation": "avg", "align": "right", "format": "currency" }, { "field": "Inventory", "label": "Inventory", "aggregation": "sum", "align": "right", "format": "number" }, { "field": "Revenue", "label": "Revenue", "aggregation": "sum", "align": "right", "format": "currency" }, { "field": "ROS", "label": "Avg ROS", "aggregation": "avg", "align": "right", "format": "decimal" } ] }
+          ]
         }
       ]
     },
@@ -623,8 +767,49 @@
               ]
             }
           ]
+        },
+        {
+          "id": "very-fast", "label": "Very Fast", "tierFilter": "very-fast",
+          "widgets": [
+            { "id": "w-ar-vf-chart", "type": "chart", "title": "Monthly Sales – Very Fast", "chartType": "bar", "span": 1, "height": "md", "dataMapping": { "xAxis": "Month", "yAxis": "Total Sales Qty", "groupBy": null }, "aggregation": "sum", "sortBy": "Month Numbering", "color": "#059669" },
+            { "id": "w-ar-vf-rev", "type": "chart", "title": "Monthly Revenue – Very Fast", "chartType": "line", "span": 1, "height": "md", "dataMapping": { "xAxis": "Month", "yAxis": "Revenue", "groupBy": null }, "aggregation": "sum", "sortBy": "Month Numbering", "color": "#059669" },
+            { "id": "w-ar-vf-table", "type": "table", "title": "Very Fast Style Details", "span": 2, "groupBy": "Style id", "columns": [ { "field": "Style id", "label": "Style ID" }, { "field": "Article Type", "label": "Article Type" }, { "field": "Total Sales Qty", "label": "Sales Qty", "aggregation": "sum", "align": "right", "format": "compact" }, { "field": "Revenue", "label": "Revenue", "aggregation": "sum", "align": "right", "format": "currency" }, { "field": "Total Return Qty", "label": "Returns", "aggregation": "sum", "align": "right", "format": "compact" }, { "field": "Return %", "label": "Return %", "aggregation": "avg", "align": "right", "format": "percent" }, { "field": "ROS", "label": "Avg ROS", "aggregation": "avg", "align": "right", "format": "decimal" } ] }
+          ]
+        },
+        {
+          "id": "fast", "label": "Fast", "tierFilter": "fast",
+          "widgets": [
+            { "id": "w-ar-f-chart", "type": "chart", "title": "Monthly Sales – Fast", "chartType": "bar", "span": 1, "height": "md", "dataMapping": { "xAxis": "Month", "yAxis": "Total Sales Qty", "groupBy": null }, "aggregation": "sum", "sortBy": "Month Numbering", "color": "#16a34a" },
+            { "id": "w-ar-f-rev", "type": "chart", "title": "Monthly Revenue – Fast", "chartType": "line", "span": 1, "height": "md", "dataMapping": { "xAxis": "Month", "yAxis": "Revenue", "groupBy": null }, "aggregation": "sum", "sortBy": "Month Numbering", "color": "#16a34a" },
+            { "id": "w-ar-f-table", "type": "table", "title": "Fast Style Details", "span": 2, "groupBy": "Style id", "columns": [ { "field": "Style id", "label": "Style ID" }, { "field": "Article Type", "label": "Article Type" }, { "field": "Total Sales Qty", "label": "Sales Qty", "aggregation": "sum", "align": "right", "format": "compact" }, { "field": "Revenue", "label": "Revenue", "aggregation": "sum", "align": "right", "format": "currency" }, { "field": "Total Return Qty", "label": "Returns", "aggregation": "sum", "align": "right", "format": "compact" }, { "field": "Return %", "label": "Return %", "aggregation": "avg", "align": "right", "format": "percent" }, { "field": "ROS", "label": "Avg ROS", "aggregation": "avg", "align": "right", "format": "decimal" } ] }
+          ]
+        },
+        {
+          "id": "moderate", "label": "Moderate", "tierFilter": "moderate",
+          "widgets": [
+            { "id": "w-ar-m-chart", "type": "chart", "title": "Monthly Sales – Moderate", "chartType": "bar", "span": 1, "height": "md", "dataMapping": { "xAxis": "Month", "yAxis": "Total Sales Qty", "groupBy": null }, "aggregation": "sum", "sortBy": "Month Numbering", "color": "#d97706" },
+            { "id": "w-ar-m-table", "type": "table", "title": "Moderate Style Details", "span": 2, "groupBy": "Style id", "columns": [ { "field": "Style id", "label": "Style ID" }, { "field": "Article Type", "label": "Article Type" }, { "field": "Total Sales Qty", "label": "Sales Qty", "aggregation": "sum", "align": "right", "format": "compact" }, { "field": "Revenue", "label": "Revenue", "aggregation": "sum", "align": "right", "format": "currency" }, { "field": "Return %", "label": "Return %", "aggregation": "avg", "align": "right", "format": "percent" }, { "field": "ROS", "label": "Avg ROS", "aggregation": "avg", "align": "right", "format": "decimal" } ] }
+          ]
+        },
+        {
+          "id": "slow", "label": "Slow", "tierFilter": "slow",
+          "widgets": [
+            { "id": "w-ar-s-chart", "type": "chart", "title": "Monthly Sales – Slow", "chartType": "bar", "span": 1, "height": "md", "dataMapping": { "xAxis": "Month", "yAxis": "Total Sales Qty", "groupBy": null }, "aggregation": "sum", "sortBy": "Month Numbering", "color": "#dc2626" },
+            { "id": "w-ar-s-table", "type": "table", "title": "Slow Style Details", "span": 2, "groupBy": "Style id", "columns": [ { "field": "Style id", "label": "Style ID" }, { "field": "Article Type", "label": "Article Type" }, { "field": "Total Sales Qty", "label": "Sales Qty", "aggregation": "sum", "align": "right", "format": "compact" }, { "field": "Revenue", "label": "Revenue", "aggregation": "sum", "align": "right", "format": "currency" }, { "field": "Return %", "label": "Return %", "aggregation": "avg", "align": "right", "format": "percent" }, { "field": "ROS", "label": "Avg ROS", "aggregation": "avg", "align": "right", "format": "decimal" } ] }
+          ]
+        },
+        {
+          "id": "dead", "label": "Dead", "tierFilter": "dead",
+          "widgets": [
+            { "id": "w-ar-d-table", "type": "table", "title": "Dead Styles (ROS = 0)", "span": 2, "groupBy": "Style id", "columns": [ { "field": "Style id", "label": "Style ID" }, { "field": "Article Type", "label": "Article Type" }, { "field": "Cost", "label": "Cost", "aggregation": "avg", "align": "right", "format": "currency" }, { "field": "Inventory", "label": "Inventory", "aggregation": "sum", "align": "right", "format": "number" }, { "field": "Revenue", "label": "Revenue", "aggregation": "sum", "align": "right", "format": "currency" }, { "field": "ROS", "label": "Avg ROS", "aggregation": "avg", "align": "right", "format": "decimal" } ] }
+          ]
         }
       ]
     }
+  ],
+  "calculatedFields": [
+    { "id": "cf-avg-price", "name": "Avg Selling Price", "formula": "GMV / Total Sales Qty", "format": "currency", "description": "Avg price per unit sold" },
+    { "id": "cf-net-units", "name": "Net Sales Qty", "formula": "Total Sales Qty - Total Return Qty", "format": "compact", "description": "Sales minus returns" },
+    { "id": "cf-return-loss", "name": "Return Revenue Loss", "formula": "Revenue * Return %", "format": "currency", "description": "Revenue lost to returns" }
   ]
 }
